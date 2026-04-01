@@ -1,0 +1,16 @@
+query SearchQuery($text: String!) {
+  search(text: $text) {
+    ... on Human {
+      name
+      homePlanet
+    }
+    ... on Droid {
+      name
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}

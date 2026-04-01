@@ -1,0 +1,15 @@
+query HeroQuery($episode: Episode!) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+    ... on Droid {
+      primaryFunction
+    }
+    ... on Human {
+      height
+      homePlanet
+    }
+  }
+}

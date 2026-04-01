@@ -1,0 +1,15 @@
+query GetHuman($id: ID!) {
+  human(id: $id) {
+    id
+    name
+    height
+    homePlanet
+    friends {
+      name
+    }
+    starships {
+      name
+      length
+    }
+  }
+}

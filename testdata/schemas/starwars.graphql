@@ -1,0 +1,76 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  hero(episode: Episode): Character
+  human(id: ID!): Human
+  droid(id: ID!): Droid
+  search(text: String!): [SearchResult!]!
+  reviews(episode: Episode!): [Review!]!
+}
+
+type Mutation {
+  createReview(episode: Episode!, review: ReviewInput!): Review
+}
+
+type Subscription {
+  reviewAdded(episode: Episode!): Review!
+}
+
+enum Episode {
+  NEWHOPE
+  EMPIRE
+  JEDI
+}
+
+enum LengthUnit {
+  METER
+  FOOT
+}
+
+interface Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode!]!
+}
+
+type Human implements Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode!]!
+  height(unit: LengthUnit = METER): Float!
+  homePlanet: String
+  starships: [Starship]
+}
+
+type Droid implements Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode!]!
+  primaryFunction: String
+}
+
+type Starship {
+  id: ID!
+  name: String!
+  length(unit: LengthUnit = METER): Float!
+}
+
+type Review {
+  episode: Episode
+  stars: Int!
+  commentary: String
+}
+
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+
+union SearchResult = Human | Droid | Starship

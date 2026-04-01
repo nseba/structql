@@ -1,0 +1,6 @@
+schema:
+  - "../schemas/starwars.graphql"
+queries: "../queries/"
+output: "../output/"
+package: "starwars"
+scalars: {}
