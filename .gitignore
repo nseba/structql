@@ -31,6 +31,9 @@ dist/
 # env file
 .env
 
+# Claude Code
+.claude/
+
 # Editor/IDE
 # .idea/
 # .vscode/
